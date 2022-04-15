@@ -55,19 +55,20 @@ class Complex implements Cloneable {
         return String.valueOf(this.imaginary);
     }
 
-    public String add(Complex c2) {
+    public Complex add(Complex c2) {
+
         double newA = this.real + Double.parseDouble(c2.getRealPart());
         double newB = this.imaginary + Double.parseDouble(c2.getImaginaryPart());
-        return newA + " + " + newB + "i";
+        return new Complex(newA, newB);
     }
 
-    public String subtract(Complex c2) {
+    public Complex subtract(Complex c2) {
         double newA = this.real - Double.parseDouble(c2.getRealPart());
         double newB = this.imaginary - Double.parseDouble(c2.getImaginaryPart());
-        return newA + " + " + newB + "i";
+        return new Complex(newA, newB);
     }
 
-    public String multiply(Complex c2) {
+    public Complex multiply(Complex c2) {
         double newAC = this.real * Double.parseDouble(c2.getRealPart());
         double newBD = this.imaginary * Double.parseDouble(c2.getImaginaryPart());
 
@@ -76,10 +77,10 @@ class Complex implements Cloneable {
 
         double left = newAC - newBD;
         double right = newBC + newAD;
-        return left + " + " + right + "i";
+        return new Complex(left, right);
     }
 
-    public String divide(Complex c2) {
+    public Complex divide(Complex c2) {
         double newAC = this.real * Double.parseDouble(c2.getRealPart());
         double newBD = this.imaginary * Double.parseDouble(c2.getImaginaryPart());
 
@@ -91,7 +92,7 @@ class Complex implements Cloneable {
 
         double left = (newAC + newBD) / (cSquared + dSquared);
         double right = (newBC - newAD) / (cSquared + dSquared);
-        return left + " + " + right + "i";
+        return new Complex(left, right);
     }
 
     @Override
